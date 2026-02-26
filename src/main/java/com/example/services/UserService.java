@@ -1,14 +1,14 @@
 package com.example.services;
 
 import com.example.models.UserEntity;
-import com.example.repositories.UserRepository;
+import com.example.repositories.JdbcUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class UserService {
-    UserRepository repository;
+    JdbcUserRepository repository;
 
     public UserEntity create(String name) {
         return repository.create(name);
@@ -22,7 +22,7 @@ public class UserService {
         return repository.deleteUser(name);
     }
 
-    public UserEntity updateUser(String name) {
-        return repository.updateUser(name);
+    public UserEntity updateUser(String oldName, String newName) {
+        return repository.updateUser(oldName, newName);
     }
 }
